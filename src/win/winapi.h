@@ -4374,6 +4374,10 @@ typedef BOOLEAN (WINAPI* sCreateSymbolicLinkW)
                  LPCWSTR lpTargetFileName,
                  DWORD dwFlags);
 
+typedef BOOL (WINAPI* sCancelIoEx)
+             (HANDLE hFile,
+              LPOVERLAPPED lpOverlapped);
+
 typedef VOID (WINAPI* sInitializeSRWLock)
              (PSRWLOCK SRWLock);
 
@@ -4408,6 +4412,7 @@ extern sNtSetInformationFile pNtSetInformationFile;
 extern sGetQueuedCompletionStatusEx pGetQueuedCompletionStatusEx;
 extern sSetFileCompletionNotificationModes pSetFileCompletionNotificationModes;
 extern sCreateSymbolicLinkW pCreateSymbolicLinkW;
+extern sCancelIoEx pCancelIoEx;
 extern sInitializeSRWLock pInitializeSRWLock;
 extern sAcquireSRWLockShared pAcquireSRWLockShared;
 extern sAcquireSRWLockExclusive pAcquireSRWLockExclusive;
