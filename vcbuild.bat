@@ -33,7 +33,7 @@ if /i "%1"=="noprojgen"    set noprojgen=1&goto arg-ok
 if /i "%1"=="nobuild"      set nobuild=1&goto arg-ok
 if /i "%1"=="x86"          set target_arch=ia32&set platform=WIN32&set vs_toolset=x86&goto arg-ok
 if /i "%1"=="ia32"         set target_arch=ia32&set platform=WIN32&set vs_toolset=x86&goto arg-ok
-if /i "%1"=="x64"          set target_arch=x64&set platform=amd64&set vs_toolset=x64&goto arg-ok
+if /i "%1"=="x64"          set target_arch=x64&set platform=x64&set vs_toolset=x64&goto arg-ok
 if /i "%1"=="shared"       set library=shared_library&goto arg-ok
 if /i "%1"=="static"       set library=static_library&goto arg-ok
 :arg-ok
@@ -101,7 +101,7 @@ echo Project files generated.
 if defined nobuild goto run
 
 @rem Check if VS build env is available
-if not defined VCINSTALLDIR goto msbuild-not-found
+if not defined GYP_MSVS_VERSION goto msbuild-not-found
 goto msbuild-found
 
 :msbuild-not-found
